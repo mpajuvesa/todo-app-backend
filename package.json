@@ -1,0 +1,21 @@
+{
+  "name": "task-app-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "start": "node ./dist/app",
+    "tsc": "./node_modules/.bin/tsc",
+    "build": "npm run clean && npm run tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
