@@ -1,7 +1,7 @@
 import { Timestamps } from './Common';
 
 export interface User extends Timestamps {
-  id?: number;
+  id?: any;
   username: string;
   password?: string;
   role: string;

@@ -1,6 +1,6 @@
 export interface Storage {
-  create(): Promise<any>;
-  read(): Promise<any>;
-  update(): Promise<any>;
-  delete(): Promise<any>;
+  create(data: any, id?: any): Promise<any>;
+  read(id?: any): Promise<any>;
+  update(id: any): Promise<any>;
+  delete(id: any): Promise<any>;
 }
