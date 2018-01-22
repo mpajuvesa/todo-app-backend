@@ -10,3 +10,10 @@ interface Timestamp {
     username: string;
   };
 }
+
+export interface Model {
+  add(data: any): Promise<any>;
+  find(id: any): Promise<any>;
+  update(id: any, data: any): Promise<any>;
+  delete(id: any): Promise<any>;
+}

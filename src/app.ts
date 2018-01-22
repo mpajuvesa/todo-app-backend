@@ -4,6 +4,8 @@ const app = express();
 import { Routes } from './router';
 
 const PORT = 4300;
+const config = require('../config/dev.json');
+process.env.DATABASE_CONFIG = JSON.stringify(config.db);
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
