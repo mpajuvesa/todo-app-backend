@@ -1,6 +1,9 @@
 # Built files
 dist
 
+# Configs
+config
+
 # Logs
 logs
 *.log
