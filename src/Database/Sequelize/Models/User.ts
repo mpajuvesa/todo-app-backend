@@ -1,10 +1,10 @@
-import { SequelizeModel } from '../Classes/Model';
+import { Model } from '../Classes/Model';
 
-export class User extends SequelizeModel {
+export class User extends Model {
   constructor() {
     super('user');
   }
-  
+
   Definition(sq: any, DataTypes: any) {
     return sq.define('user', {
       username: DataTypes.STRING,

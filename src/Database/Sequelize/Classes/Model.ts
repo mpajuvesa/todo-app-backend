@@ -1,7 +1,8 @@
 import { Database } from '../Database';
-import { Model } from '../../../Interfaces/Common';
+import { Model as IModel } from '../../../Interfaces/Common';
 
-export class SequelizeModel implements Model {
+export class Model implements IModel {
+  name: string;
   private database: any;
   private model: any;
   get Database() {
@@ -21,8 +22,10 @@ export class SequelizeModel implements Model {
    * @param name
    */
   constructor(name: string) {
+    this.name = name;
+
     this.database = new Database().instance();
-    this.Model = this.database.import(name, this.Definition);
+    this.Model = this.database.import(this.name, this.Definition);
   }
   /**
    * Add data
