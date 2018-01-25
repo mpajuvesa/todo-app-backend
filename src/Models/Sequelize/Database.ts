@@ -26,9 +26,9 @@ export class Database {
       throw new Error('No database options provided');
     }
 
-    Database.connection = new Sequelize(options.database, options.user, options.password, {
+    Database.connection = new Sequelize(options.database, options.username, options.password, {
       host: options.host,
-      dialect: 'mysql',
+      dialect: options.dialect,
       pool: {
         max: 5,
         min: 0,
@@ -39,7 +39,7 @@ export class Database {
   }
 
   private validateConfig(config: any): boolean {
-    return config.host && config.user && config.password && config.database;
+    return config.host && config.username && config.password && config.database && config.dialect;
   }
 
 }

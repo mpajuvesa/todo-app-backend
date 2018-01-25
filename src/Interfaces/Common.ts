@@ -12,8 +12,6 @@ interface Timestamp {
 }
 
 export interface Model {
-  name: string;
-  
   add(data: any): Promise<any>;
   find(id: any): Promise<any>;
   update(id: any, data: any): Promise<any>;
