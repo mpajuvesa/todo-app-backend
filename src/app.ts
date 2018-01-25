@@ -1,6 +1,8 @@
 import * as express from 'express';
 const app = express();
 
+import * as bodyParser from 'body-parser';
+
 import { Routes } from './router';
 
 const PORT = 4300;
@@ -12,6 +14,8 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With, Authorization");
   next();
 });
+
+app.use(bodyParser.json());
 
 app.use(Routes);
 
