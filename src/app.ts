@@ -7,24 +7,31 @@ import { Routes } from './router';
 
 import { get } from 'lodash';
 
-const configFile = require('../config/config.json');
-const PORT = 4300;
+import { Database } from './Database';
 
-const stage = process.env.STAGE || 'development';
-const config = get(configFile, stage);
+(async () => {
+  const db = await new Database().instance();
+  app.locals.db = db;
 
-process.env.DATABASE_CONFIG = JSON.stringify(config);
+  const configFile = require('../config/config.json');
+  const PORT = 4300;
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With, Authorization");
-  next();
-});
+  const stage = process.env.STAGE || 'development';
+  const config = get(configFile, stage);
 
-app.use(bodyParser.json());
+  process.env.DATABASE_CONFIG = JSON.stringify(config);
 
-app.use(Routes);
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With, Authorization");
+    next();
+  });
 
-app.listen(PORT, () => {
-  console.log(`Servers started at port ${PORT}`);
-});
+  app.use(bodyParser.json());
+
+  app.use(Routes);
+
+  app.listen(PORT, () => {
+    console.log(`Servers started at port ${PORT}`);
+  });
+})();
